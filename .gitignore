@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+.cache/
+.cache
+public/
+.eslintignore
+.eslintrc.js
+.env
