@@ -8,7 +8,7 @@ const Plant = ({ pageContext }) => {
   return (
     <div>
       <Header />
-      <Hero />
+
 
       <GatsbyImage image={pageContext?.plant?.image?.childImageSharp?.gatsbyImageData} alt="poop" />
     </div>

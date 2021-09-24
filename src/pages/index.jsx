@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import Header from '../components/Header';
 import Hero from '../components/Hero'
-import { Link } from 'gatsby'
+import Card from '../components/Card'
+import { CardWrapper } from '../components/Card/Card.styles'
 
 const index = ({ data }) => {
   const plantData = data.allDataJson.edges[0].node.plants;
+
+  const [plants, setPlants] = useState(plantData)
+
+  const handleInputChange = event => {
+    setPlants(plantData.filter(item => {
+      const newData = item.names.common.toLowerCase();
+      return newData.includes(event.target.value.toLowerCase())
+    }))
+  }
+
   return (
     <div>
       <Header />
-      <Hero />
-      {plantData.map(({
-        care, details, image, names, toxicity,
-      }) => {
-        const imageData = getImage(image);
-        return (
-          <Link to={image.name}>
-            {names.common}
-            <GatsbyImage image={imageData} alt="poop" />
-          </Link>
-        );
-      })}
+      <Hero handleInputChange={handleInputChange} />
+      <CardWrapper>
+        {plants.map((data) => <Card data={data} />)}
+      </CardWrapper>
     </div>
+
   );
 };
 
@@ -38,24 +42,18 @@ export const query = graphql` {
             name
           childImageSharp {
             gatsbyImageData(
-              width: 500
+              width: 400
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )
           }
         }
-          details
           names {
             common
-            scientific
           }
           toxicity {
             property
             symptoms
-          }
-          care {
-            light
-            water
           }
         }
       }
