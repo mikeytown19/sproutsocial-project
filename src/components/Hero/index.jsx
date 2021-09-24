@@ -14,7 +14,7 @@ const Hero = ({ handleInputChange }) => {
             <h1>Can my cat eat that?</h1>
             <p>Search and filter common house plants and see what’s safe for Sprinkles to nibble on.</p>
             <label><Search /></label>
-            <input onChange={handleInputChange} type='text' />
+            <input placeholder="Spider plant, fiddle leaf fig, etc..." onChange={handleInputChange} type='text' />
           </div>
           <CatRight />
         </Styled.Hero>

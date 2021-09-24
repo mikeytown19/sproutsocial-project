@@ -22,6 +22,9 @@ const index = ({ data }) => {
     <div>
       <Header />
       <Hero handleInputChange={handleInputChange} />
+      <div>
+
+      </div>
       <CardWrapper>
         {plants.map((data) => <Card data={data} />)}
       </CardWrapper>
@@ -42,7 +45,7 @@ export const query = graphql` {
             name
           childImageSharp {
             gatsbyImageData(
-              width: 400
+              width: 300
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )

@@ -12,14 +12,14 @@ const Card = ({ children, data }) => {
           <GatsbyImage className="image" image={imageData} alt="poop" />
         </Styled.CardTop>
         <Styled.CardBottom>
-          <p>
+          <Styled.PlantName>
             {names.common}
-          </p>
+          </Styled.PlantName>
 
           <div>
-            <p>
-              {toxicity && 'toxic'}
-            </p>
+            <Styled.CardBadge toxicity={toxicity}>
+              {toxicity ? 'Toxic' : 'Non-toxic'}
+            </Styled.CardBadge>
           </div>
 
         </Styled.CardBottom>
