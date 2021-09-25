@@ -1,31 +1,41 @@
-import React from 'react'
-import * as Styled from './Card.styles'
-import { Link } from 'gatsby'
+import React from 'react';
+import { Link } from 'gatsby';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
-const Card = ({ children, data }) => {
-  const { image, names, toxicity } = data
-  const imageData = getImage(image)
+import * as Styled from './Card.styles';
+import ListCard from '../List';
+
+const Card = ({ listView, children, data }) => {
+  const {
+    image, names, toxicity, details,
+  } = data;
+
+  const imageData = getImage(image);
   return (
-    <Styled.Card>
-      <Link to={image.name}>
-        <Styled.CardTop>
-          <GatsbyImage className="image" image={imageData} alt="poop" />
-        </Styled.CardTop>
-        <Styled.CardBottom>
-          <Styled.PlantName>
-            {names.common}
-          </Styled.PlantName>
+    !listView
+      ? (
+        <Styled.Card>
+          <Link to={image.name}>
+            <Styled.CardTop>
+              <GatsbyImage className="image" image={imageData} alt="poop" />
+            </Styled.CardTop>
+            <Styled.CardBottom>
+              <Styled.PlantName>
+                {names.common}
+              </Styled.PlantName>
 
-          <div>
-            <Styled.CardBadge toxicity={toxicity}>
-              {toxicity ? 'Toxic' : 'Non-toxic'}
-            </Styled.CardBadge>
-          </div>
+              <div>
+                <Styled.CardBadge toxicity={toxicity}>
+                  {toxicity ? 'Toxic' : 'Non-toxic'}
+                </Styled.CardBadge>
+              </div>
 
-        </Styled.CardBottom>
-      </Link>
-    </Styled.Card>
-  )
-}
+            </Styled.CardBottom>
+          </Link>
+        </Styled.Card>
+      )
+      : <ListCard to={image.name} imageData={imageData} details={details} {...data} />
 
-export default Card
+  );
+};
+
+export default Card;

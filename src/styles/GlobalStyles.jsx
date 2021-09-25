@@ -9,6 +9,8 @@ const DarkVariables = css`
       --color-green: #006B40;
       --color-yellow:  #FFBC00;
       --color-text: #273333;
+      --color-text-light: #515E5F;
+      --color-select: #B0B6B7;
 `;
 
 const GlobalStyles = ({ theme }) => (
@@ -45,6 +47,7 @@ const GlobalStyles = ({ theme }) => (
           --color-green: #006B40;
           --color-yellow:  #FFBC00;
           --color-text: #273333;
+          --color-select: #B0B6B7;
         }
 
         h1 {
