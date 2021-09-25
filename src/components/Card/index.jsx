@@ -14,23 +14,23 @@ const Card = ({ listView, children, data }) => {
     !listView
       ? (
         <Styled.Card>
-          <Link to={image.name}>
-            <Styled.CardTop>
-              <GatsbyImage className="image" image={imageData} alt="poop" />
-            </Styled.CardTop>
-            <Styled.CardBottom>
-              <Styled.PlantName>
-                {names.common}
-              </Styled.PlantName>
+          {/* <Link to={image.name}> */}
+          <Styled.CardTop>
+            <GatsbyImage className="image" image={imageData} alt="poop" />
+          </Styled.CardTop>
+          <Styled.CardBottom>
+            <Styled.PlantName>
+              {names.common}
+            </Styled.PlantName>
 
-              <div>
-                <Styled.CardBadge toxicity={toxicity}>
-                  {toxicity ? 'Toxic' : 'Non-toxic'}
-                </Styled.CardBadge>
-              </div>
+            <div>
+              <Styled.CardBadge toxicity={toxicity}>
+                {toxicity ? 'Toxic' : 'Non-toxic'}
+              </Styled.CardBadge>
+            </div>
 
-            </Styled.CardBottom>
-          </Link>
+          </Styled.CardBottom>
+          {/* </Link> */}
         </Styled.Card>
       )
       : <ListCard to={image.name} imageData={imageData} details={details} {...data} />

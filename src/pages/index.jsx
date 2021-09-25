@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Card from '../components/Card';
@@ -9,34 +8,42 @@ import { CardWrapper } from '../components/Card/Card.styles';
 import { ListOptionButton, ListOptionContainer } from '../components/Options/Options.styles';
 import GridIcon from '../images/assets/grid.svg';
 import ListIcon from '../images/assets/list.svg';
-
-const index = ({ data }) => {
-  const plantData = data.allDataJson.edges[0].node.plants;
+import Modal from '../components/Modal'
+const Index = ({ data }) => {
+  const plantData = data?.allDataJson?.edges[0]?.node?.plants;
 
   const [plants, setPlants] = useState(plantData);
   const [viewOptionList, setViewOptionList] = useState(false);
-  const [toxicPlants, setToxicPlants] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectTerm, setSelectTerm] = useState('');
+  const [modalActive, setModalActive] = useState(false);
 
   const handleInputChange = (event) => {
-    setPlants(plantData.filter((item) => {
-      const newData = item.names.common.toLowerCase();
-      return newData.includes(event.target.value.toLowerCase());
-    }), ...plants);
+    setSearchTerm(event.target.value);
   };
 
-  const handleClick = (event) => {
-    setViewOptionList(!viewOptionList);
-    console.log(viewOptionList);
+  const handleClick = (temp, settemp) => {
+    console.log(temp)
+    settemp(!temp);
   };
 
   const handleSelect = (event) => {
-    const selectToxicValue = event.target.value;
-    selectToxicValue && setPlants(plantData.filter((item) => (selectToxicValue === 'toxic' && item.toxicity)
-      || (selectToxicValue === 'non-toxic' && !item.toxicity)));
+    setSelectTerm(event.target.value)
   };
+
+
+
+  const searchResults = !searchTerm
+  ? plants
+  : plants.filter((plant) => plant.names.common.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+
+  const results = !selectTerm ? searchResults : searchResults.filter((item) => (
+    selectTerm === 'toxic' && item.toxicity)
+  || (selectTerm === 'non-toxic' && !item.toxicity))
 
   return (
     <div>
+      {modalActive && <Modal />}
       <Header />
       <Hero handleInputChange={handleInputChange} />
       <Options>
@@ -52,26 +59,26 @@ const index = ({ data }) => {
         <div>
           View Options
           <ListOptionContainer>
-            <ListOptionButton onClick={handleClick}>
+            <ListOptionButton onClick={() => handleClick(viewOptionList, setViewOptionList)}>
               <GridIcon />
             </ListOptionButton>
-            <ListOptionButton onClick={handleClick}>
+            <ListOptionButton onClick={() => handleClick(viewOptionList, setViewOptionList)}>
               <ListIcon />
             </ListOptionButton>
           </ListOptionContainer>
 
         </div>
-
       </Options>
-      <CardWrapper listView={viewOptionList}>
-        {plants.map((data) => <Card listView={viewOptionList} data={data} />)}
+      <CardWrapper   onClick={() => handleClick(modalActive, setModalActive)} listView={viewOptionList}>
+        {results.map((data) => <Card
+
+        listView={viewOptionList} data={data} />)}
       </CardWrapper>
     </div>
-
   );
 };
 
-export default index;
+export default Index;
 
 export const query = graphql` {
   allDataJson {
@@ -84,7 +91,7 @@ export const query = graphql` {
             name
           childImageSharp {
             gatsbyImageData(
-              width: 300
+              width: 600
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )

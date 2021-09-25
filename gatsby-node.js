@@ -12,7 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
               name
             childImageSharp {
               gatsbyImageData(
-                width: 500
+                width: 1200
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
               )
@@ -42,12 +42,9 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-
   const projects = result.data.allDataJson.edges[0].node.plants || [];
 
-
   projects.forEach((edge) => {
-    console.log(edge, 'edge console log')
     const path = `/${edge.image.name}`;
     createPage({
       path,
