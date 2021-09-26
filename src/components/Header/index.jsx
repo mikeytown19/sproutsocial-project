@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
 import Logo from '../../images/assets/catopia.svg';
-import * as Styled from './Header.styles'
-import Layout from '../Layout'
+import * as Styled from './Header.styles';
+import { Layout } from '..';
 
-const Header = () => (
+export const Header = () => (
   <Styled.Header>
     <Layout>
       <Link to="/">
@@ -13,6 +13,3 @@ const Header = () => (
     </Layout>
   </Styled.Header>
 );
-
-export default Header;
-

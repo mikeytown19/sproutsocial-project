@@ -1,41 +1,32 @@
-import styled from '@emotion/styled'
+import { styled } from '../../theme/stiches.config';
 
-export const Hero = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: left;
-  input {
-    display: relative;
-    border-radius: 50px;
-    border: var(--color-lightgray) solid 1px;
-    max-width: 800px;
-    width: 100%;
-    height: 50px;
-    display: block;
-    margin-top: -50px;
-    padding-left: 50px;
-    font-size: 24px;
-    transition: border .5s;
-
-    &:focus {
-      outline: none;
-      border: 1px var(--color-green) solid;
-      transition: border  .5s;
-    }
-  }
-
-  label {
-    padding-left: 10px;
-    display: block;
-    svg {
-      z-index: 2;
-    }
-  }
-
-`
-
-
-export const Wrapper = styled.div`
-  background-color: var(--color-lightblue);
-`
+export const Hero = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  textAlign: 'left',
+  input: {
+    display: 'block',
+    borderRadius: '50px',
+    border: '$lightgray solid 1px',
+    maxWidth: '800px',
+    width: '100%',
+    height: '50px',
+    marginTop: '-50px',
+    paddingLeft: '50px',
+    fontSize: '24px',
+    transition: 'border .5s',
+    '&:focus': {
+      outline: 'none',
+      border: '1px $green solid',
+      transition: 'border  .5s',
+    },
+  },
+  label: {
+    paddingLeft: '10px',
+    display: 'block',
+    svg: {
+      zIndex: 2,
+    },
+  },
+});

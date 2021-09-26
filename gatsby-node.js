@@ -12,7 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
               name
             childImageSharp {
               gatsbyImageData(
-                width: 1200
+                width: 1600
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
               )

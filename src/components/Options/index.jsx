@@ -2,7 +2,7 @@ import React from 'react';
 import * as Styled from './Options.styles';
 import Layout from '../Layout';
 
-const Options = ({ children }) => (
+export const Options = ({ children }) => (
   <Layout>
 
     <Styled.OptionsWrapper>
@@ -10,5 +10,3 @@ const Options = ({ children }) => (
     </Styled.OptionsWrapper>
   </Layout>
 );
-
-export default Options;

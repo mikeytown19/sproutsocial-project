@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import Card from '../components/Card';
-import Options from '../components/Options';
+import {Header, Hero, Card, Options} from '../components'
 import { CardWrapper } from '../components/Card/Card.styles';
 import { ListOptionButton, ListOptionContainer } from '../components/Options/Options.styles';
 import GridIcon from '../images/assets/grid.svg';
 import ListIcon from '../images/assets/list.svg';
-import Modal from '../components/Modal'
+
 const Index = ({ data }) => {
   const plantData = data?.allDataJson?.edges[0]?.node?.plants;
 
-  const [plants, setPlants] = useState(plantData);
+
   const [viewOptionList, setViewOptionList] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectTerm, setSelectTerm] = useState('');
-  const [modalActive, setModalActive] = useState(false);
+
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -34,8 +31,8 @@ const Index = ({ data }) => {
 
 
   const searchResults = !searchTerm
-  ? plants
-  : plants.filter((plant) => plant.names.common.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+  ? plantData
+  : plantData.filter((plant) => plant.names.common.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
 
   const results = !selectTerm ? searchResults : searchResults.filter((item) => (
     selectTerm === 'toxic' && item.toxicity)
@@ -43,10 +40,10 @@ const Index = ({ data }) => {
 
   return (
     <div>
-      {modalActive && <Modal />}
       <Header />
       <Hero handleInputChange={handleInputChange} />
-      <Options>
+
+      {/* <Options>
         <div>
           <label>Toxicity</label>
           <select onChange={handleSelect}>
@@ -69,11 +66,12 @@ const Index = ({ data }) => {
 
         </div>
       </Options>
-      <CardWrapper   onClick={() => handleClick(modalActive, setModalActive)} listView={viewOptionList}>
-        {results.map((data) => <Card
-
-        listView={viewOptionList} data={data} />)}
-      </CardWrapper>
+      <CardWrapper listView={viewOptionList}>
+        {results.map((data) =>
+        <Card
+          listView={viewOptionList}
+          data={data} />)}
+      </CardWrapper> */}
     </div>
   );
 };
@@ -91,7 +89,7 @@ export const query = graphql` {
             name
           childImageSharp {
             gatsbyImageData(
-              width: 600
+              width: 300
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )

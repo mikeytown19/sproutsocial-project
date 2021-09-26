@@ -1,10 +1,7 @@
-import styled from '@emotion/styled'
+import { styled } from '../../theme/stiches.config';
 
-export const Header = styled.header`
-  background-color: var(--color-primary);
-  text-align: left;
-  svg {
-    height: 32px;
-    padding: 20px 30px;
-  }
-`;
+export const Header = styled('header', {
+  bg: '$primary',
+  textAlign: 'left',
+  svg: { height: '32px', padding: '20px 30px' },
+});

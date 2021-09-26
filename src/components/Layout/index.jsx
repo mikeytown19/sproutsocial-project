@@ -1,15 +1,13 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { styled } from '../../theme/stiches.config';
 
-const Layout = ({ children }) => (
+export const Layout = ({ children }) => (
   <Wrapper>
     {children}
   </Wrapper>
 );
 
-export default Layout;
-
-const Wrapper = styled.section`
-  max-width: 1600px;
-  margin: auto;
-`;
+const Wrapper = styled('section', {
+  maxWidth: '1600px',
+  margin: 'auto',
+});

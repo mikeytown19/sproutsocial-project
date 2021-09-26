@@ -1,10 +1,9 @@
 import React from 'react';
-import GlobalStyles from './GlobalStyles';
-import theme from './theme';
+import { globalStyles } from './GlobalStyles';
 
+globalStyles();
 const ThemeProvider = ({ children }) => (
   <>
-    <GlobalStyles theme={theme} />
     {children}
   </>
 );

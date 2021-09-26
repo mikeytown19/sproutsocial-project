@@ -2,7 +2,7 @@ import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import * as Styled from './List.styles';
 
-const List = ({
+export const List = ({
   to, imageData, names, toxicity, details,
 }) => (
   <Styled.List to={to}>
@@ -32,5 +32,3 @@ const List = ({
     </Styled.ListDetails>
   </Styled.List>
 );
-
-export default List;
