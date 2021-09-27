@@ -11,14 +11,18 @@ export const Hero = ({ handleInputChange }) => (
   <Box bg="lightblue">
     <Layout>
       <Styled.Hero>
-        <CatLeft />
-        <Box py="5">
-          <Text as="h1">Can my cat eat that?</Text>
+        <Box css={{ '@bp3': { display: 'none' } }} flex ai="center">
+          <CatLeft />
+        </Box>
+        <Box py="5" px="3">
+          <Text mb="0" as="h1">Can my cat eat that?</Text>
           <Text maxWidth="2" size="md">Search and filter common house Textlants and see what’s safe for Sprinkles to nibble on.</Text>
-          <label htmlFor="search"><Search /></label>
+          <Text as="label"><Search /></Text>
           <input id="search" placeholder="Spider plant, fiddle leaf fig, etc..." onChange={handleInputChange} type="text" />
         </Box>
-        <CatRight />
+        <Box css={{ '@bp2': { display: 'none' }, svg: { marginTop: '-60px' } }}>
+          <CatRight />
+        </Box>
       </Styled.Hero>
     </Layout>
   </Box>

@@ -38,6 +38,7 @@ const stitches = createStitches({
       7: '700',
       8: '800',
       9: '900',
+      light: '$2',
       normal: '$4',
       bold: '$7',
       extraBold: '$9',
@@ -51,16 +52,10 @@ const stitches = createStitches({
       6: '32px',
       7: '40px',
       8: '50px',
-      9: '64px',
-      10: '80px',
-      11: '101px',
-      12: '125px',
     },
     shadows: {
       1: '0 0 12px rgba(0, 0, 0, .25)',
       2: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;',
-      3: 'rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;',
-      4: 'rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;',
     },
     space: {
       1: '0.3rem',
@@ -77,16 +72,11 @@ const stitches = createStitches({
       12: '7rem',
     },
     sizes: {
-      1: '0.3rem',
-      2: '0.5rem',
-      3: '0.9rem',
-      4: '1rem',
-      5: '1.1rem',
-      6: '530px',
-      7: '800px',
-      8: '1000px',
-      9: '1200px',
-      10: '1400px',
+      1: '320px',
+      2: '530px',
+      3: '900px',
+      4: '1100px',
+      5: '1440px',
     },
 
     radii: {
@@ -106,10 +96,10 @@ const stitches = createStitches({
     },
   },
   media: {
-    bp1: '(min-width: 520px)',
-    bp2: '(min-width: 900px)',
-    bp3: '(min-width: 1200px)',
-    bp4: '(min-width: 1800px)',
+    bp1: '(max-width: 530px)',
+    bp2: '(max-width: 900px)',
+    bp3: '(max-width: 1100px)',
+    bp4: '(max-width: 1440px)',
     motion: '(prefers-reduced-motion)',
     hover: '(any-hover: hover)',
     dark: '(prefers-color-scheme: dark)',
@@ -170,9 +160,6 @@ const stitches = createStitches({
     btlr: (value) => ({ borderTopLeftRadius: value }),
     bs: (value) => ({ boxShadow: value }),
     lh: (value) => ({ lineHeight: value }),
-    pe: (value) => ({ pointerEvents: value }),
-    us: (value) => ({ WebkitUserSelect: value, userSelect: value }),
-
     size: (value) => ({
       width: value,
       height: value,
@@ -187,29 +174,15 @@ const stitches = createStitches({
 
 export const breakpoints = {
   default: (rule) => rule,
-  bp1: (rule) => `@media (min-width: 520px) { ${rule} }`,
-  bp2: (rule) => `@media (min-width: 900px) { ${rule} }`,
-  bp3: (rule) => `@media (min-width: 1200px) { ${rule} }`,
-  bp4: (rule) => `@media (min-width: 1800px) { ${rule} }`,
+  bp1: (rule) => `@media (max-width: 520px) { ${rule} }`,
+  bp2: (rule) => `@media (max-width: 900px) { ${rule} }`,
+  bp3: (rule) => `@media (max-width: 1200px) { ${rule} }`,
+  bp4: (rule) => `@media (max-width: 1800px) { ${rule} }`,
 };
 
 export const {
   styled,
   css,
   globalCss,
-  keyframes,
-  theme,
   getCssText,
-  createTheme,
 } = stitches;
-
-export const darkTheme = createTheme('dark-theme', {
-  colors: {
-    // Semantic colors
-    canvas: 'hsl(0 0% 15%)',
-    panel: '$slate3',
-    transparentPanel: 'hsl(0 100% 100% / 97%)',
-    shadowLight: 'hsl(206 22% 7% / 35%)',
-    shadowDark: 'hsl(206 22% 7% / 20%)',
-  },
-});

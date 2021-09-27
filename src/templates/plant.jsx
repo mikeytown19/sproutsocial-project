@@ -12,8 +12,11 @@ const Plant = ({ pageContext }) => {
       <Header />
       <Box css={{
          pt: '$10',
-         maxWidth: '$7',
+         maxWidth: '$4',
          margin: 'auto',
+         '@bp3': {
+           pt: '0'
+         }
       }}>
         <ImageWrapper image={pageContext?.plant?.image?.childImageSharp?.gatsbyImageData} alt="poop" />
 

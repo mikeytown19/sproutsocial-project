@@ -17,7 +17,6 @@ export const globalStyles = globalCss({
   h1: {
     fontWeight: 800,
     fontSize: '$8',
-    lineHeight: '$2',
     pb: '0',
   },
   'a, b': {

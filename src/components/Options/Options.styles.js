@@ -6,20 +6,15 @@ export const OptionsWrapper = styled('div', {
   padding: '30px 10px',
   alignItems: 'center',
   select: {
+    WebkitAppearance: 'none',
+    MozAppearance: 'none',
+    appearance: 'none',
     border: 'solid $lightgray 1px',
     borderRadius: '8px',
     width: '250px',
+    '@bp1': {
+      width: '150px',
+    },
 
   },
 });
-
-export const ListOptionContainer = styled('div',
-  { display: 'flex', alignItems: 'center' });
-
-export const ListOptionButton = styled('div',
-  {
-    marginRight: '10px',
-    '&:hover': {
-      cursor: 'pointer',
-    },
-  });

@@ -8,6 +8,6 @@ export const Layout = ({ children }) => (
 );
 
 const Wrapper = styled('section', {
-  maxWidth: '1600px',
+  maxWidth: '$5',
   margin: 'auto',
 });

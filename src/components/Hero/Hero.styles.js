@@ -7,17 +7,22 @@ export const Hero = styled('div', {
   textAlign: 'left',
   input: {
     display: 'block',
-    color: '$lightgray',
     fontWeight: '$2',
-    borderRadius: '50px',
+    borderRadius: '$pill',
     border: '$lightgray solid 1px',
-    maxWidth: '800px',
+    maxWidth: '$4',
     width: '100%',
     height: '50px',
     marginTop: '-50px',
     paddingLeft: '50px',
     fontSize: '$6',
     transition: 'border .5s',
+    '@bp1': {
+      fontSize: '$2',
+    },
+    '@bp2': {
+      fontSize: '$4',
+    },
     '&:focus': {
       outline: 'none',
       border: '1px $green solid',

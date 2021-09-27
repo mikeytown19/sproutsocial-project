@@ -1,32 +1,17 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
-import {Header, Hero, Card, Options, Box, Text} from '../components'
-
-import GridIcon from '../images/assets/grid.svg';
-import ListIcon from '../images/assets/list.svg';
+import {Header, Hero, Card, Options, Box} from '../components'
 
 const Index = ({ data }) => {
   const plantData = data?.allDataJson?.edges[0]?.node?.plants;
-
 
   const [viewOptionList, setViewOptionList] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectTerm, setSelectTerm] = useState('');
 
 
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleClick = (temp, settemp) => {
-    console.log(temp)
-    settemp(!temp);
-  };
-
-  const handleSelect = (event) => {
-    setSelectTerm(event.target.value)
-  };
-
+  const handleChange = (event, updateState) => updateState(event.target.value);
+  const handleClick = (param, updateState) => updateState(!param);;
 
 
   const searchResults = !searchTerm
@@ -38,50 +23,25 @@ const Index = ({ data }) => {
   || (selectTerm === 'non-toxic' && !item.toxicity))
 
   return (
-    <div>
+    <>
       <Header />
-      <Hero handleInputChange={handleInputChange} />
-    <Options>
-        <Box flex fd="column">
-          <Text fw="5" as="label" pb="2">Toxicity</Text>
-          <Text p="1" as="select" color="textLight" onChange={handleSelect}>
-            <option value="" default>Select an option</option>
-            <option value="toxic">toxic</option>
-            <option value="non-toxic">non-toxic</option>
-          </Text>
-        </Box>
-
-        <Box>
-          <Text pb="0">View Options</Text>
-          <Box flex ai="center">
-            <Box
-             mr="1"
-             onClick={() => handleClick(viewOptionList, setViewOptionList)}
-              css={{
-              '&:hover': {
-              cursor: 'pointer',
-            }}}>
-              <GridIcon />
-            </Box>
-            <Box
-              onClick={() => handleClick(viewOptionList, setViewOptionList)}
-              css={{
-                '&:hover': {
-                cursor: 'pointer',
-                }}}>
-              <ListIcon />
-            </Box>
-          </Box>
-
-        </Box>
-      </Options>
+      <Hero handleInputChange={(e) => handleChange(e, setSearchTerm)} />
+      <Options
+        handleClick={handleClick}
+        viewOptionList={viewOptionList}
+        selectTerm={selectTerm}
+        setViewOptionList={setViewOptionList}
+        setSelectTerm={setSelectTerm}
+        handleChange={handleChange}
+      />
       <Box viewOption={viewOptionList ? 'list': 'grid'} listView={viewOptionList}>
-        {results.map((data) =>
+        {results.map((data) =>console.log(data) ||
         <Card
+          key={data.image.id}
           listView={viewOptionList}
           data={data} />)}
       </Box>
-    </div>
+    </>
   );
 };
 

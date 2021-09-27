@@ -4,10 +4,10 @@ export const flexVariants = css({
   variants: {
     flex: {
       true: {
-        flexWrap: 'wrap',
+        display: 'flex',
+        flexWrap: 'initial',
         '@bp2': {
-          display: 'flex',
-          flexWrap: 'initial',
+          flexWrap: 'wrap',
         },
       },
     },

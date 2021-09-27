@@ -16,13 +16,13 @@ export const Box = styled('div', {
     },
     viewOption: {
       list: {
-        maxWidth: '$10',
+        maxWidth: '$5',
         margin: 'auto',
         display: 'flex',
         flexDirection: 'column',
       },
       grid: {
-        maxWidth: '$10',
+        maxWidth: '$5',
         margin: 'auto',
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 300px))',
