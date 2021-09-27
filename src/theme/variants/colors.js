@@ -6,6 +6,12 @@ export const colorVariants = css({
       primary: {
         color: '$primary',
       },
+      white: {
+        color: '$white',
+      },
+      textLight: {
+        color: '$textLight',
+      },
     },
   },
 });
@@ -19,6 +25,13 @@ export const backgroundColorVariants = css({
       lightblue: {
         bg: '$lightblue',
       },
+      green: {
+        bg: '$green',
+      },
+      yellow: {
+        bg: '$yellow',
+      },
+
     },
   },
 });

@@ -4,12 +4,22 @@ import {
 } from '../../theme/variants';
 
 export const Text = styled('p', {
-  pb: '$5',
   variants: {
     size: {
+      badge: {
+        fontSize: '$1',
+        lineHeight: '$1',
+        fontWeight: '$7',
+      },
+      xs: {
+        fontSize: '$2',
+        lineHeight: '$1',
+        fontWeight: '$7',
+      },
       sm: {
         fontSize: '$3',
         lineHeight: '$3',
+        fontWeight: '$5',
       },
       md: {
         fontSize: '$5',

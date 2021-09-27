@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
-import {Header, Hero, Card, Options} from '../components'
-import { CardWrapper } from '../components/Card/Card.styles';
-import { ListOptionButton, ListOptionContainer } from '../components/Options/Options.styles';
+import {Header, Hero, Card, Options, Box, Text} from '../components'
+
 import GridIcon from '../images/assets/grid.svg';
 import ListIcon from '../images/assets/list.svg';
 
@@ -42,36 +41,46 @@ const Index = ({ data }) => {
     <div>
       <Header />
       <Hero handleInputChange={handleInputChange} />
-
-      {/* <Options>
-        <div>
-          <label>Toxicity</label>
-          <select onChange={handleSelect}>
+    <Options>
+        <Box flex fd="column">
+          <Text fw="5" as="label" pb="2">Toxicity</Text>
+          <Text p="1" as="select" color="textLight" onChange={handleSelect}>
             <option value="" default>Select an option</option>
             <option value="toxic">toxic</option>
             <option value="non-toxic">non-toxic</option>
-          </select>
-        </div>
+          </Text>
+        </Box>
 
-        <div>
-          View Options
-          <ListOptionContainer>
-            <ListOptionButton onClick={() => handleClick(viewOptionList, setViewOptionList)}>
+        <Box>
+          <Text pb="0">View Options</Text>
+          <Box flex ai="center">
+            <Box
+             mr="1"
+             onClick={() => handleClick(viewOptionList, setViewOptionList)}
+              css={{
+              '&:hover': {
+              cursor: 'pointer',
+            }}}>
               <GridIcon />
-            </ListOptionButton>
-            <ListOptionButton onClick={() => handleClick(viewOptionList, setViewOptionList)}>
+            </Box>
+            <Box
+              onClick={() => handleClick(viewOptionList, setViewOptionList)}
+              css={{
+                '&:hover': {
+                cursor: 'pointer',
+                }}}>
               <ListIcon />
-            </ListOptionButton>
-          </ListOptionContainer>
+            </Box>
+          </Box>
 
-        </div>
+        </Box>
       </Options>
-      <CardWrapper listView={viewOptionList}>
+      <Box viewOption={viewOptionList ? 'list': 'grid'} listView={viewOptionList}>
         {results.map((data) =>
         <Card
           listView={viewOptionList}
           data={data} />)}
-      </CardWrapper> */}
+      </Box>
     </div>
   );
 };

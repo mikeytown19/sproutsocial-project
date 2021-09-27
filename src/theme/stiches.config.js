@@ -1,30 +1,21 @@
 import { createStitches } from '@stitches/react';
 
-export { StitchesVariants } from '@stitches/react';
-
 const stitches = createStitches({
   theme: {
     colors: {
       primary: '#002138',
+      textLight: '#515E5F',
+      lightgray: '#B0B6B7',
       gray: '#DEE1E1',
       lightblue: '#E9F8FF',
       green: '#006B40',
       yellow: '#FFBC00',
       text: '#273333',
-      textLlight: '#515E5F',
-      select: '#B0B6B7',
       muted: '#f6f6f6',
-
-      // Semantic colors
-      canvas: 'hsl(0 0% 93%)',
-      panel: 'white',
-      transparentPanel: 'hsl(0 0% 0% / 97%)',
-      shadowLight: 'hsl(206 22% 7% / 35%)',
-      shadowDark: 'hsl(206 22% 7% / 20%)',
-
+      white: '#fff',
     },
     fonts: {
-      body: '-apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+      body: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
       mono: 'Söhne Mono, menlo, monospace',
     },
     fontSizes: {
@@ -35,11 +26,7 @@ const stitches = createStitches({
       5: '21px',
       6: '24px',
       7: '32px',
-      8: '43px',
-      9: '57px',
-      10: '76px',
-      11: '101px',
-      12: '135px',
+      8: '40px',
     },
     fontWeights: {
       1: '100',
@@ -70,7 +57,7 @@ const stitches = createStitches({
       12: '125px',
     },
     shadows: {
-      1: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;',
+      1: '0 0 12px rgba(0, 0, 0, .25)',
       2: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;',
       3: 'rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;',
       4: 'rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;',
@@ -95,14 +82,11 @@ const stitches = createStitches({
       3: '0.9rem',
       4: '1rem',
       5: '1.1rem',
-      6: '1.4rem',
-      7: '1.8rem',
-      8: '2rem',
-      9: '3rem',
-      10: '4rem',
-      11: '5rem',
-      12: '8rem',
-      13: '375px',
+      6: '530px',
+      7: '800px',
+      8: '1000px',
+      9: '1200px',
+      10: '1400px',
     },
 
     radii: {
@@ -138,18 +122,10 @@ const stitches = createStitches({
       paddingLeft: value,
       paddingRight: value,
     }),
-    pt: (value) => ({
-      paddingTop: value,
-    }),
-    pr: (value) => ({
-      paddingRight: value,
-    }),
-    pb: (value) => ({
-      paddingBottom: value,
-    }),
-    pl: (value) => ({
-      paddingLeft: value,
-    }),
+    pt: (value) => ({ paddingTop: value }),
+    pr: (value) => ({ paddingRight: value }),
+    pb: (value) => ({ paddingBottom: value }),
+    pl: (value) => ({ paddingLeft: value }),
     px: (value) => ({
       paddingLeft: value,
       paddingRight: value,
@@ -158,25 +134,16 @@ const stitches = createStitches({
       paddingTop: value,
       paddingBottom: value,
     }),
-
     m: (value) => ({
       marginTop: value,
       marginBottom: value,
       marginLeft: value,
       marginRight: value,
     }),
-    mt: (value) => ({
-      marginTop: value,
-    }),
-    mr: (value) => ({
-      marginRight: value,
-    }),
-    mb: (value) => ({
-      marginBottom: value,
-    }),
-    ml: (value) => ({
-      marginLeft: value,
-    }),
+    mt: (value) => ({ marginTop: value }),
+    mr: (value) => ({ marginRight: value }),
+    mb: (value) => ({ marginBottom: value }),
+    ml: (value) => ({ marginLeft: value }),
     mx: (value) => ({
       marginLeft: value,
       marginRight: value,
@@ -185,51 +152,24 @@ const stitches = createStitches({
       marginTop: value,
       marginBottom: value,
     }),
-
     ta: (value) => ({ textAlign: value }),
-
     fd: (value) => ({ flexDirection: value }),
     fw: (value) => ({ flexWrap: value }),
-
     ai: (value) => ({ alignItems: value }),
     ac: (value) => ({ alignContent: value }),
     ji: (value) => ({ justifyItems: value }),
     jc: (value) => ({ justifyContent: value }),
     as: (value) => ({ alignSelf: value }),
-    fg: (value) => ({ flexGrow: value }),
     fs: (value) => ({ fontSize: value }),
-    fb: (value) => ({ flexBasis: value }),
-
-    bg: (value) => ({
-      backgroundColor: value,
-    }),
-    stopColor: (value) => ({
-      stopColor: value,
-    }),
-
-    br: (value) => ({
-      borderRadius: value,
-    }),
-    btrr: (value) => ({
-      borderTopRightRadius: value,
-    }),
-    bbrr: (value) => ({
-      borderBottomRightRadius: value,
-    }),
-    bblr: (value) => ({
-      borderBottomLeftRadius: value,
-    }),
-    btlr: (value) => ({
-      borderTopLeftRadius: value,
-    }),
-
+    bg: (value) => ({ backgroundColor: value }),
+    bb: (value) => ({ borderBottom: value }),
+    br: (value) => ({ borderRadius: value }),
+    btrr: (value) => ({ borderTopRightRadius: value }),
+    bbrr: (value) => ({ borderBottomRightRadius: value }),
+    bblr: (value) => ({ borderBottomLeftRadius: value }),
+    btlr: (value) => ({ borderTopLeftRadius: value }),
     bs: (value) => ({ boxShadow: value }),
-
     lh: (value) => ({ lineHeight: value }),
-
-    ox: (value) => ({ overflowX: value }),
-    oy: (value) => ({ overflowY: value }),
-
     pe: (value) => ({ pointerEvents: value }),
     us: (value) => ({ WebkitUserSelect: value, userSelect: value }),
 
@@ -242,18 +182,6 @@ const stitches = createStitches({
       backgroundImage: `linear-gradient(to bottom right,${value}, rgba(37,99,235,0))`,
     }),
 
-    appearance: (value) => ({
-      WebkitAppearance: value,
-      appearance: value,
-    }),
-    userSelect: (value) => ({
-      WebkitUserSelect: value,
-      userSelect: value,
-    }),
-    backgroundClip: (value) => ({
-      WebkitBackgroundClip: value,
-      backgroundClip: value,
-    }),
   },
 });
 
@@ -263,10 +191,6 @@ export const breakpoints = {
   bp2: (rule) => `@media (min-width: 900px) { ${rule} }`,
   bp3: (rule) => `@media (min-width: 1200px) { ${rule} }`,
   bp4: (rule) => `@media (min-width: 1800px) { ${rule} }`,
-  motion: (rule) => `@media (prefers-reduced-motion) { ${rule} }`,
-  hover: (rule) => `@media (hover: hover) { ${rule} }`,
-  dark: (rule) => `@media (prefers-color-scheme: dark) { ${rule} }`,
-  light: (rule) => `@media (prefers-color-scheme: light) { ${rule} }`,
 };
 
 export const {
@@ -281,7 +205,6 @@ export const {
 
 export const darkTheme = createTheme('dark-theme', {
   colors: {
-
     // Semantic colors
     canvas: 'hsl(0 0% 15%)',
     panel: '$slate3',

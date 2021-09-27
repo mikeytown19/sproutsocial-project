@@ -5,15 +5,32 @@ import {
 
 export const Box = styled('div', {
   boxSizing: 'border-box',
-  '.dummyImage': {
-    width: '100%',
-    maxWidth: '500px',
-  },
-  '@bp2': {
-    '.dummyImage': {
-      width: '100%',
-      maxWidth: 'initial',
+  variants: {
+    badge: {
+      green: {
+        bg: '$green',
+      },
+      yellow: {
+        bg: '$yellow',
+      },
+    },
+    viewOption: {
+      list: {
+        maxWidth: '$10',
+        margin: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      grid: {
+        maxWidth: '$10',
+        margin: 'auto',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 300px))',
+        padding: '0 30px',
+        justifyContent: 'center',
+        gap: '30px',
 
+      },
     },
   },
 }, flexVariants,

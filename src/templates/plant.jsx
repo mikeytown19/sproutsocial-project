@@ -1,29 +1,71 @@
 import React from 'react';
-import Header from '../components/Header';
+import {Header, Layout} from '../components';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import styled from '@emotion/styled'
-import { graphql } from 'gatsby';
-import Layout from '../components/Layout'
+import {styled } from '../theme/stiches.config'
+import {Box, Text, Badge} from '../components'
 
 const Plant = ({ pageContext }) => {
-  console.log(pageContext)
-  const {names} = pageContext.plant
+  const {names, toxicity, details} = pageContext.plant
 
   return (
     <div>
       <Header />
-      <Wrapper>
+      <Box css={{
+         pt: '$10',
+         maxWidth: '$7',
+         margin: 'auto',
+      }}>
         <ImageWrapper image={pageContext?.plant?.image?.childImageSharp?.gatsbyImageData} alt="poop" />
 
-        <div>
-          <div>
-            <h1>
+        <Box flex jc="between" ai="start" py="5" px="3" css={{bb: 'solid $lightgray 1px'}}>
+          <Box>
+            <Text as="h1" css={{m: '0'}}>
               {names.common}
-            </h1>
-            <p><i>{names.scientific}</i></p>
-          </div>
-        </div>
-      </Wrapper>
+            </Text>
+            <Text color="textLight"><i>{names.scientific}</i></Text>
+          </Box>
+           <Box>
+              <Badge badge={toxicity ? 'yellow' : 'green'}>
+                <Text size="xs" color={!toxicity && 'white'}>
+                  {toxicity ? 'Toxic' : 'Non-toxic'}
+                </Text>
+          </Badge>
+          </Box>
+        </Box>
+        <Box flex jc="between" p="3" css={{bb: 'solid $lightgray 1px'}}>
+          <Box>
+            <Text fw="6">
+              Details
+            </Text>
+          </Box>
+          <Box>
+            <Text fw="3" maxWidth="2">
+              {details}
+            </Text>
+          </Box>
+        </Box>
+        { toxicity &&
+        <Box flex jc="between" p="3" css={{bb: 'solid $lightgray 1px'}}>
+          <Box>
+            <Text fw="6">
+              Toxicity
+            </Text>
+          </Box>
+          <Box>
+              <ul>
+                {toxicity.property &&
+                <Text fw="3" maxWidth="2" as="li">
+                  {toxicity.property}
+                </Text>}
+                {toxicity.symptoms &&
+                <Text fw="3" maxWidth="2" as="li">
+                  {toxicity.symptoms}
+                </Text>}
+              </ul>
+              <Text maxWidth="2" size="xs" fw="6">If you suspect your pet may have ingested a potentially toxic substance, contact your local veterinarian as soon as possible.</Text>
+          </Box>
+        </Box>}
+      </Box>
 
     </div>
   );
@@ -31,15 +73,8 @@ const Plant = ({ pageContext }) => {
 
 export default Plant
 
-
-const ImageWrapper = styled(GatsbyImage)`
-  width: 100%;
-  height: 400px;
-
-`
-
-const Wrapper = styled.div`
-  max-width: 800px;
-  margin: auto;
-`
+const ImageWrapper = styled(GatsbyImage, {
+  width: '100%',
+  height: '400px',
+})
 
