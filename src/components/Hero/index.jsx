@@ -14,7 +14,15 @@ export const Hero = ({ handleInputChange }) => (
         <Box css={{ '@bp3': { display: 'none' } }} flex ai="center">
           <CatLeft />
         </Box>
-        <Box py="5" px="3">
+        <Box
+          py="5"
+          px="3"
+          css={{
+            '@bp1': {
+              pt: '$1',
+            },
+          }}
+        >
           <Text mb="0" as="h1">Can my cat eat that?</Text>
           <Text maxWidth="2" size="md">Search and filter common house Textlants and see what’s safe for Sprinkles to nibble on.</Text>
           <Text as="label"><Search /></Text>

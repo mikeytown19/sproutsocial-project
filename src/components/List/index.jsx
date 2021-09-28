@@ -10,34 +10,70 @@ export const List = ({
   to, imageData, names, toxicity, details,
 }) => (
   <ListWrapper to={to}>
-    <Box flex ai="center" p="1" css={{ flex: 1 }}>
-
-      <Box css={{
-        size: '50px',
-        my: '$2',
-        '.gatsby-image-wrapper': { height: '100%' },
-        img: { borderRadius: '50px' },
+    <Box
+      flex
+      ai="center"
+      p="1"
+      css={{
+        flex: 2,
+        '@bp1': {
+          justifyContent: 'space-between',
+        },
       }}
+    >
+
+      <Box
+        flex
+        ai="center"
+        p="1"
+        css={{
+          flex: 1,
+          '@bp1': {
+            display: 'flex',
+            flex: 'initial',
+            justifyContent: 'space-between',
+          },
+        }}
       >
-        <GatsbyImage className="image" image={imageData} alt="poop" />
-      </Box>
-      <Box pl="2">
-        <Box flex fd="column">
-          <Text as="span" size="md" fw="5">
-            {names.common}
-          </Text>
-          <Text size="xs" fw="3" as="i" color="textLight">
-            {names.scientific}
-          </Text>
+
+        <Box css={{
+          size: '50px',
+          my: '$2',
+          '.gatsby-image-wrapper': { height: '100%' },
+          img: { borderRadius: '50px' },
+        }}
+        >
+          <GatsbyImage className="image" image={imageData} alt="poop" />
+        </Box>
+        <Box pl="2">
+          <Box flex fd="column">
+            <Text as="span" size="md" fw="5">
+              {names.common}
+            </Text>
+            <Text size="xs" fw="3" as="i" color="textLight">
+              {names.scientific}
+            </Text>
+          </Box>
         </Box>
       </Box>
-    </Box>
-    <Box flex css={{ flex: '0.7' }}>
-      <Badge badge={toxicity ? 'yellow' : 'green'}>
-        <Text size="xs" color={!toxicity && 'white'}>
-          {toxicity ? 'Toxic' : 'Non-toxic'}
-        </Text>
-      </Badge>
+      <Box
+        flex
+        css={{
+          flex: '0.7',
+          '@bp2': {
+            justifyContent: 'flex-end',
+            flex: 'initial',
+          },
+        }}
+      >
+        <Badge
+          badge={toxicity ? 'yellow' : 'green'}
+        >
+          <Text size="xs" color={!toxicity && 'white'}>
+            {toxicity ? 'Toxic' : 'Non-toxic'}
+          </Text>
+        </Badge>
+      </Box>
     </Box>
     <Text
       maxWidth="3"
@@ -46,6 +82,12 @@ export const List = ({
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         flex: 4,
+        '@bp3': {
+          flex: 2,
+        },
+        '@bp1': {
+          display: 'none',
+        },
       }}
     >
       {details}
@@ -55,6 +97,7 @@ export const List = ({
 
 const ListWrapper = styled(Link,
   {
+
     transition: 'box-shadow .2s ease-in-out',
     textDecoration: 'none',
     color: '$primary',
@@ -64,4 +107,12 @@ const ListWrapper = styled(Link,
     paddingRight: '30px',
     borderTop: '$gray solid 1px',
     '&:hover': { boxShadow: '$1' },
+    '@bp2': {
+      display: 'block',
+      flexWrap: 'wrap',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      px: '$3',
+    },
   });
