@@ -18,5 +18,5 @@ export const Header = () => (
 const Wrapper = styled('header', {
   bg: '$primary',
   textAlign: 'left',
-  svg: { height: '32px', padding: '20px 30px' },
+  svg: { height: '32px', p: '$4' },
 });

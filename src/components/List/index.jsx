@@ -25,10 +25,11 @@ export const List = ({
       <Box
         flex
         ai="center"
-        p="1"
         css={{
           flex: 1,
+          p: '$2',
           '@bp1': {
+            p: '$1',
             display: 'flex',
             flex: 'initial',
             justifyContent: 'space-between',
@@ -45,7 +46,7 @@ export const List = ({
         >
           <GatsbyImage className="image" image={imageData} alt="poop" />
         </Box>
-        <Box pl="2">
+        <Box pl="2" css={{ '@bp1': { pl: '$1' } }}>
           <Box flex fd="column">
             <Text as="span" size="md" fw="5">
               {names.common}
@@ -113,6 +114,6 @@ const ListWrapper = styled(Link,
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
-      px: '$3',
+      px: '0',
     },
   });

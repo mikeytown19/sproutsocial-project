@@ -24,6 +24,10 @@ export const Text = styled('p', {
       md: {
         fontSize: '$5',
         lineHeight: '$5',
+        '@bp2': {
+          fontSize: '$3',
+          lineHeight: '$3',
+        },
       },
       lg: {
         fontSize: '$6',

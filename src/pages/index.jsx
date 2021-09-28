@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import {Header, Hero, Card, Options, Box} from '../components'
+import useLocalStorageState from '../Utils/useLocalStorage';
 
 const Index = ({ data }) => {
   const plantData = data?.allDataJson?.edges[0]?.node?.plants;
 
-  const [viewOptionList, setViewOptionList] = useState(false);
+  // const [viewOptionList, setViewOptionList] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectTerm, setSelectTerm] = useState('');
 
+  const [viewOptionList, setViewOptionList] = useLocalStorageState(
+    'listView',
+    false
+  )
 
-  const handleChange = (event, updateState) => updateState(event.target.value);
-  const handleClick = (param, updateState) => updateState(!param);;
+  const handleChange = (event, updateState) =>{
+        updateState(event.target.value);
+    }
+  const handleClick = (param, updateState) => {
+       updateState(!param);
+    }
 
 
   const searchResults = !searchTerm
@@ -35,8 +44,8 @@ const Index = ({ data }) => {
         handleChange={handleChange}
       />
       <Box viewOption={viewOptionList ? 'list': 'grid'} listView={viewOptionList}>
-        {results.map((data) =>console.log(data) ||
-        <Card
+        {results.map((data) =>
+         <Card
           key={data.image.id}
           listView={viewOptionList}
           data={data} />)}

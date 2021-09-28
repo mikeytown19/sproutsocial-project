@@ -17,11 +17,12 @@ export const Hero = styled('div', {
     paddingLeft: '50px',
     fontSize: '$6',
     transition: 'border .5s',
-    '@bp1': {
-      fontSize: '$2',
-    },
     '@bp2': {
       fontSize: '$4',
+    },
+    '@bp1': {
+      fontSize: '$2',
+
     },
     '&:focus': {
       outline: 'none',
@@ -34,6 +35,10 @@ export const Hero = styled('div', {
     display: 'block',
     svg: {
       zIndex: 2,
+      '@bp1': {
+        fontSize: '$2',
+
+      },
     },
   },
 });

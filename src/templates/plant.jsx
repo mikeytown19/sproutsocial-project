@@ -5,7 +5,8 @@ import {styled } from '../theme/stiches.config'
 import {Box, Text, Badge} from '../components'
 
 const Plant = ({ pageContext }) => {
-  const {names, toxicity, details} = pageContext.plant
+  console.log(pageContext)
+  const {names, toxicity, details, care} = pageContext.plant
 
   return (
     <div>
@@ -19,7 +20,6 @@ const Plant = ({ pageContext }) => {
          }
       }}>
         <ImageWrapper image={pageContext?.plant?.image?.childImageSharp?.gatsbyImageData} alt="poop" />
-
         <Box flex jc="between" ai="start" py="5" px="3" css={{bb: 'solid $lightgray 1px'}}>
           <Box>
             <Text as="h1" css={{m: '0'}}>
@@ -35,37 +35,77 @@ const Plant = ({ pageContext }) => {
           </Badge>
           </Box>
         </Box>
-        <Box flex jc="between" p="3" css={{bb: 'solid $lightgray 1px'}}>
-          <Box>
+        <Box flex p="3" css={{bb: 'solid $lightgray 1px',
+        '@bp1': {
+          display: 'block',
+          bb: '0',
+          p: '$3'
+        }}}>
+          <Box css={{flex: '1'}}>
             <Text fw="6">
               Details
             </Text>
           </Box>
-          <Box>
+          <Box css={{flex: '1'}}>
             <Text fw="3" maxWidth="2">
               {details}
             </Text>
           </Box>
         </Box>
         { toxicity &&
-        <Box flex jc="between" p="3" css={{bb: 'solid $lightgray 1px'}}>
-          <Box>
+        <Box flex p="3" css={{bb: 'solid $lightgray 1px',
+        '@bp1': {
+          display: 'block',
+          bb: '0',
+          p: '$3'
+        }}}>
+          <Box css={{flex: '1'}}>
             <Text fw="6">
               Toxicity
             </Text>
           </Box>
-          <Box>
-              <ul>
+          <Box pl="5" css={{
+          flex: '1' ,
+          '@bp1': { pl: 'inherit'}}}>
+              <Text as="ul" p="0">
                 {toxicity.property &&
-                <Text fw="3" maxWidth="2" as="li">
+                <Text fw="3" maxWidth="2" as="li" pb="2">
                   {toxicity.property}
                 </Text>}
                 {toxicity.symptoms &&
                 <Text fw="3" maxWidth="2" as="li">
                   {toxicity.symptoms}
                 </Text>}
-              </ul>
-              <Text maxWidth="2" size="xs" fw="6">If you suspect your pet may have ingested a potentially toxic substance, contact your local veterinarian as soon as possible.</Text>
+              </Text>
+              <Text  size="xs" fw="7">If you suspect your pet may have ingested a potentially toxic substance, contact your local veterinarian as soon as possible.</Text>
+          </Box>
+        </Box>}
+        { care &&
+        <Box flex p="3" css={{bb: 'solid $lightgray 1px',
+        '@bp1': {
+          display: 'block',
+          bb: '0',
+          p: '$3'
+        }}}>
+          <Box css={{flex: '1'}}>
+            <Text fw="6">
+              Care Taking
+            </Text>
+          </Box>
+          <Box  pl="5"
+          css={{
+          flex: '1' ,
+          '@bp1': { pl: 'inherit'}}}>
+              <Text as="ul" p="0">
+                {care.light &&
+                <Text fw="3" maxWidth="2" as="li" pb="2">
+                  {care.light}
+                </Text>}
+                {care.water &&
+                <Text fw="3" maxWidth="2" as="li">
+                  {care.water}
+                </Text>}
+              </Text>
           </Box>
         </Box>}
       </Box>
@@ -79,5 +119,8 @@ export default Plant
 const ImageWrapper = styled(GatsbyImage, {
   width: '100%',
   height: '400px',
+  '@bp1': {
+    height: '250px'
+  }
 })
 
