@@ -9,7 +9,7 @@ import ListIcon from '../../images/assets/list.svg';
 import DownArrow from '../../images/assets/downArrow.svg';
 
 export const Options = ({
-  handleChange, setSelectTerm, setViewOptionList, viewOptionList, handleClick,
+  handleChange, setSelectTerm, setViewOptionList, viewOptionList,
 }) => (
   <Layout>
     <Styled.OptionsWrapper>
@@ -35,13 +35,17 @@ export const Options = ({
 
       <Box>
         <Text fw="5" mt="1" pb="0">View Options</Text>
-        <Box flex ai="center">
+        <Box flex ai="center" jc="end">
           <Box
             mr="1"
             flex
             ai="center"
-            onClick={() => handleClick(viewOptionList, setViewOptionList)}
+            onClick={() => setViewOptionList('grid')}
             css={{
+              pt: '1px',
+              path: {
+                fill: viewOptionList === 'grid' && '$green',
+              },
               '&:hover': {
                 cursor: 'pointer',
               },
@@ -52,8 +56,11 @@ export const Options = ({
           <Box
             flex
             ai="center"
-            onClick={() => handleClick(viewOptionList, setViewOptionList)}
+            onClick={() => setViewOptionList('list')}
             css={{
+              path: {
+                fill: viewOptionList === 'list' && '$green',
+              },
               '&:hover': {
                 cursor: 'pointer',
               },

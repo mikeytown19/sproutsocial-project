@@ -1,5 +1,6 @@
 import React from 'react';
 import {Header, Layout} from '../components';
+import {Link} from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image';
 import {styled } from '../theme/stiches.config'
 import {Box, Text, Badge} from '../components'
@@ -20,7 +21,16 @@ const Plant = ({ pageContext }) => {
          }
       }}>
         <ImageWrapper image={pageContext?.plant?.image?.childImageSharp?.gatsbyImageData} alt="poop" />
+        <Box px="1">
+            <Text color="textLight" size="xs" fw="4" css={{a: { pr: '3px', textDecoration: 'none', color: '$textLight'}}}>
+              <Link to="/">
+                Home /
+              </Link>
+                 {names.common}
+          </Text>
+        </Box>
         <Box flex jc="between" ai="start" py="5" px="3" css={{bb: 'solid $lightgray 1px'}}>
+
           <Box>
             <Text as="h1" css={{m: '0'}}>
               {names.common}

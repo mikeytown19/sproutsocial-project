@@ -7,14 +7,15 @@ import { Text } from '../Text';
 import { Badge } from '../Badge';
 import { styled } from '../../theme/stiches.config';
 
-export const Card = ({ listView, data }) => {
+export const Card = ({ listViewOption, data }) => {
   const {
     image, names, toxicity, details,
   } = data;
 
   const imageData = getImage(image);
+
   return (
-    !listView
+    listViewOption === 'grid'
       ? (
         <CardWrapper>
           <Link to={image.name}>
@@ -69,6 +70,9 @@ const CardWrapper = styled('div', {
     a: {
       textDecoration: 'none',
       color: '$primary',
+    },
+    '@bp1': {
+      boxShadow: 'none',
     },
   },
 });
