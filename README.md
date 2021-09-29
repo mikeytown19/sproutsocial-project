@@ -49,3 +49,4 @@ const Wrapper = styled('section', {
 `stiches.config.js` is where you can define tokens, utils, and more as part of the stiches configuration. 
 Check out [Stitches](https://stitches.dev/docs/styling) for more information.
 
+live [Demo](https://challenge-sproutsocial.netlify.app/)
