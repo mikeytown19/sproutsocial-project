@@ -35,7 +35,7 @@ export const Options = ({
 
       <Box>
         <Text fw="5" mt="1" pb="0">View Options</Text>
-        <Box flex ai="center" jc="end">
+        <Box flex ai="center" jc="end" test-id="view-options">
           <Box
             mr="1"
             flex

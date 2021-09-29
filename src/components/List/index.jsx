@@ -9,7 +9,7 @@ import { styled } from '../../theme/stiches.config';
 export const List = ({
   to, imageData, names, toxicity, details,
 }) => (
-  <ListWrapper to={to}>
+  <ListWrapper test-id="list-card" to={to}>
     <Box
       flex
       ai="center"
