@@ -7,3 +7,4 @@ export { List } from './List';
 export { Options } from './Options';
 export { Text } from './Text';
 export { Card } from './Card';
+export { ErrorCat } from './ErrorCat';

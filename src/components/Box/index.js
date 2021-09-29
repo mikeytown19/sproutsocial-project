@@ -26,10 +26,8 @@ export const Box = styled('div', {
         margin: 'auto',
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 300px))',
-        padding: '0 30px',
         justifyContent: 'center',
         gap: '30px',
-
       },
     },
   },

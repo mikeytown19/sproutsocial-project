@@ -105,15 +105,24 @@ const ListWrapper = styled(Link,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingRight: '30px',
+    paddingRight: '$8',
     borderTop: '$gray solid 1px',
-    '&:hover': { boxShadow: '$1' },
+    '&:hover': {
+      boxShadow: '$1',
+      '@bp1': {
+        boxShadow: 'none',
+      },
+    },
     '@bp2': {
       display: 'block',
       flexWrap: 'wrap',
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
+      px: '$3',
+    },
+    '@bp1': {
       px: '0',
     },
+
   });

@@ -72,7 +72,7 @@ const CardWrapper = styled('div', {
       color: '$primary',
     },
     '@bp1': {
-      boxShadow: 'none',
+      boxShadow: '0',
     },
   },
 });

@@ -1,14 +1,11 @@
 import { styled } from '../../theme/stiches.config';
-import {
-  flexVariants, paddingVariants, marginVariants, backgroundColorVariants,
-} from '../../theme/variants';
 import { Box } from '../Box';
 
 export const Badge = styled(Box, {
   boxSizing: 'border-box',
-  fontSize: '12px',
-  fontWeight: 700,
-  borderRadius: '50px',
+  fontSize: '$1',
+  fontWeight: '$7',
+  borderRadius: '$pill',
   padding: '5px 10px',
   '>p': {
     m: '0',
@@ -23,7 +20,4 @@ export const Badge = styled(Box, {
       },
     },
   },
-}, flexVariants,
-paddingVariants,
-marginVariants,
-backgroundColorVariants);
+});
