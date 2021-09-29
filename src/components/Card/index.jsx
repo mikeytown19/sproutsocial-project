@@ -17,7 +17,7 @@ export const Card = ({ listViewOption, data }) => {
   return (
     listViewOption === 'grid'
       ? (
-        <CardWrapper>
+        <CardWrapper test-id="card">
           <Link to={image.name}>
             <Box css={{
               height: '100%',
