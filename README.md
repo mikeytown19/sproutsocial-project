@@ -1,6 +1,23 @@
 # SproutSocial Challenge
 Using [Gatsby](https://www.gatsbyjs.com/), [Stitches](https://stitches.dev/), as well as [cypress](https://www.cypress.io/) for testing the rendered output of React components.
 
+## Deployment
+
+To start this project run
+
+```bash
+  yarn develop
+```
+
+
+To test this project run
+
+```bash
+  yarn test
+```
+
+  
+
 
 ## File stucture
 ```
