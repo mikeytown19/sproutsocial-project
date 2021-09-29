@@ -5,12 +5,12 @@ describe('Switches between Grid and List View', () => {
 
     cy.get('[test-id="view-options"]').closest('div').find('svg').last()
       .click();
-    expect(cy.get('[listviewoption="list"]'));
+    expect(cy.get('[test-id="list"]'));
   });
 
   it('should show Grid view of cards', () => {
     cy.visit('/');
-    expect(cy.get('[listviewoption="grid"]'));
+    expect(cy.get('[test-id="grid"]'));
   });
 
   it('should select list view, go to a plant page and return with the list view still active', () => {
@@ -19,7 +19,7 @@ describe('Switches between Grid and List View', () => {
 
     cy.get('[test-id="view-options"]').closest('div').find('svg').last()
       .click();
-    expect(cy.get('[listviewoption="list"]'));
+    expect(cy.get('[test-id="list"]'));
 
     cy.get('#search').type('Aloe');
     cy.get('[test-id="list-card"]')
@@ -27,6 +27,6 @@ describe('Switches between Grid and List View', () => {
     cy.wait(500);
     cy.get('h1').contains('Aloe');
     cy.go('back');
-    expect(cy.get('[listviewoption="list"]'));
+    expect(cy.get('[test-id="list"]'));
   });
 });

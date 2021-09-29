@@ -6,7 +6,7 @@ describe('Search and click a card to take you to its page', () => {
 
     cy.get('#search').type(urlString);
 
-    cy.get('[listviewoption="grid"]')
+    cy.get('[test-id="grid"]')
       .get('[test-id="card"]')
       .click();
     cy.url().should('include', urlString);

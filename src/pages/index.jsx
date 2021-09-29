@@ -1,7 +1,16 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import { graphql } from 'gatsby';
 import {Header, Hero, Card, Options, Box, ErrorCat} from '../components'
 import useLocalStorageState from '../Utils/useLocalStorage';
+
+
+const useFromLocalStorage = (initialValue) => {
+  const [viewOptionList, setViewOptionList] = useLocalStorageState(
+    'listView',
+    initialValue
+  )
+  return { viewOptionList, setViewOptionList }
+}
 
 
 const Index = ({ data }) => {
@@ -10,10 +19,14 @@ const Index = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectTerm, setSelectTerm] = useState('');
 
-  const [viewOptionList, setViewOptionList] = useLocalStorageState(
-    'listView',
-    'grid'
-  )
+  const {viewOptionList, setViewOptionList } = useFromLocalStorage(false)
+
+  useEffect(() => {
+    if (!viewOptionList) {
+      setViewOptionList('grid')
+    }
+
+  }, [])
 
   const handleChange = (event, updateState) =>{
         updateState(event.target.value);
@@ -30,7 +43,13 @@ const Index = ({ data }) => {
     selectTerm === 'toxic' && item.toxicity)
   || (selectTerm === 'non-toxic' && !item.toxicity))
 
-  console.log(results)
+  console.log(viewOptionList, 'viewOptionList')
+
+
+  const BoxViewWrapper = ({children}) => {
+    return viewOptionList ==="grid"
+  ? <Box test-id="grid" viewOption="grid">{children} </Box> : <Box test-id="list"  viewOption="list">{children} </Box>
+  }
 
   return (
     <>
@@ -44,7 +63,7 @@ const Index = ({ data }) => {
         setSelectTerm={setSelectTerm}
         handleChange={handleChange}
       />
-      <Box viewOption={viewOptionList === 'grid' ? 'grid': 'list'} listViewOption={viewOptionList}>
+      {viewOptionList && <BoxViewWrapper>
         {results?.length ? results.map((data) =>
          <Card
           key={data.image.id}
@@ -52,7 +71,7 @@ const Index = ({ data }) => {
           data={data} />)
         : <ErrorCat  bottomText="No Plants Found" />
         }
-      </Box>
+      </BoxViewWrapper>}
     </>
   );
 };

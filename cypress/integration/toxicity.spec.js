@@ -3,10 +3,10 @@ describe('Filter between toxic and non-toxic plants', () => {
     cy.visit('/');
     cy.get('select').select('toxic');
 
-    cy.get('[listviewoption="grid"]')
+    cy.get('[test-id="grid"]')
       .get('[test-id="card"]').contains('Toxic');
 
-    expect(cy.get('[listviewoption="grid"]')
+    expect(cy.get('[test-id="grid"]')
       .get('[test-id="card"]').contains('Toxic'));
   });
 
@@ -14,10 +14,10 @@ describe('Filter between toxic and non-toxic plants', () => {
     cy.visit('/');
     cy.get('select').select('non-toxic');
 
-    cy.get('[listviewoption="grid"]')
+    cy.get('[test-id="grid"]')
       .get('[test-id="card"]').contains('Non-toxic');
 
-    expect(cy.get('[listviewoption="grid"]')
+    expect(cy.get('[test-id="grid"]')
       .get('[test-id="card"]').contains('Non-toxic'));
   });
 });
