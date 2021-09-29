@@ -1,7 +1,8 @@
 import React, { useState} from 'react';
 import { graphql } from 'gatsby';
-import {Header, Hero, Card, Options, Box} from '../components'
+import {Header, Hero, Card, Options, Box, Text} from '../components'
 import useLocalStorageState from '../Utils/useLocalStorage';
+import LostCat from '../images/assets/lostCat.svg'
 
 const Index = ({ data }) => {
   const plantData = data?.allDataJson?.edges[0]?.node?.plants;
@@ -29,6 +30,8 @@ const Index = ({ data }) => {
     selectTerm === 'toxic' && item.toxicity)
   || (selectTerm === 'non-toxic' && !item.toxicity))
 
+  console.log(results)
+
   return (
     <>
       <Header />
@@ -42,11 +45,29 @@ const Index = ({ data }) => {
         handleChange={handleChange}
       />
       <Box viewOption={viewOptionList === 'grid' ? 'grid': 'list'} listViewOption={viewOptionList}>
-        {results.map((data) =>
+        {results?.length ? results.map((data) =>
          <Card
           key={data.image.id}
           listViewOption={viewOptionList}
-          data={data} />)}
+          data={data} />)
+        : <Box flex fd="column" jc="center" ai="center">
+          <Text as="h3" fw="5">
+            Wait a meow-ment.
+          </Text>
+          <Box css={{svg: {
+            size: '400px',
+            '@bp1': {
+              maxWidth: '100px',
+              maxHeight: '100px'
+            }
+          }}}>
+            <LostCat />
+          </Box>
+          <Text as="h3" fw="5">
+           No Plants Found
+          </Text>
+        </Box>
+        }
       </Box>
     </>
   );
